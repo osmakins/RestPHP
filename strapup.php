@@ -1,10 +1,12 @@
 <?php
 require 'vendor/autoload.php';
 
-use Dotenv\Dotenv;
-use Src\System\dbconn;
+use DevCoder\DotEnv;
+use Src\System\DatabaseConnector;
 
-$dotenv = new DotEnv(__DIR__);
+$dotenv = new DotEnv(__DIR__."/.env");
 $dotenv->load();
 
 $dbConnection = (new DatabaseConnector())->getConnection();
+
+

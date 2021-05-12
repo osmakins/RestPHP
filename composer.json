@@ -1,6 +1,8 @@
 {
+  "name": "rest/php",
+  "description": "",
   "require": {
-    "vlucas/phpdotenv": "^2.4"
+    "devcoder-xyz/php-dotenv": "^1.0.2"
   },
   "autoload": {
     "psr-4": {
