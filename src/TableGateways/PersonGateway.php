@@ -65,4 +65,29 @@ class PersonGateway{
             exit($e->getMessage());
         }
     }
+    public function update($id, Array $input){
+        $statement = "
+            UPDATE person
+            SET
+                firstname = :firstname,
+                lastname = :lastname,
+                firstparent_id = :firstparent_id,
+                secondparent_id = :secondparent_id
+            WHERE id = :id;
+        ";
+        try{
+            $statement = $this->db->prepare($statement);
+            $statement->execute(
+                array(
+                    'id' => (int) $id,
+                    'firstname' => $input['firstname'],
+                    'lastname' => $input['lastname'],
+                    'firstparent_id' => $input['firstparent_id'] ?? null,
+                    'secondparent_id' => $input['secondparent_id'] ?? null,
+                )
+            );
+        } catch(\PDOException $e){
+            exit($e->getMessage());
+        }
+    }
 }
