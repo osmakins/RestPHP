@@ -42,4 +42,27 @@ class PersonGateway{
             exit($e->getMessage());
         }
     }
+    public function insert(Array $input){
+        $statement = "
+            INSERT INTO person
+                (firstname, lastname, firstparent_id, secondparent_id)
+            VALUES
+                (:firstname, :lastname, :firstparent_id, :secondparent_id);
+        ";
+
+        try{
+            $statement = $this->db->prepare($statement);
+            $statement->execute(
+                array(
+                    'firstname' => $input['firstname'],
+                    'lastname' => $input['lastname'],
+                    'firstparent_id' => $input['firstparent_id'] ?? null,
+                    'secondparent_id' => $input['secondparent_id'] ?? null,
+                )
+            );
+            return $statement->rowCount();
+        } catch(\PDOException $e){
+            exit($e->getMessage());
+        }
+    }
 }
