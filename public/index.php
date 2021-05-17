@@ -26,4 +26,4 @@ if(isset($uri[2])){
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 
 $controller = new PersonController($dbConnection, $requestMethod, $userId);
-$controller.processRequest();
+$controller->processRequest();
