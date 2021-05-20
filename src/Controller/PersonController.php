@@ -46,4 +46,30 @@ class PersonController{
             echo $response['body'];
         }
     }
+    private function getAllUsers(){
+        $result = $this->personGateway->findAll();
+        $response['status_code_header'] = 'HTTP/1.1 200 OK';
+        $response['body'] = json_decode($result);
+        return $response;
+    }
+
+    private function getUser(){
+        
+    }
+
+    private function createUserFromRequest(){
+
+    }
+
+    private function updateUserFromRequest($id){
+
+    }
+
+    private function deleteUser($id){
+        
+    }
+
+    private function notFoundResponse(){
+
+    }
 }
